@@ -83,9 +83,17 @@ fn includeDeps(b: *std.Build, lib: *std.Build.Step.Compile) !void {
 }
 
 pub fn searched_idf_libs(b: *std.Build, lib: *std.Build.Step.Compile) !void {
-    var dir = try std.fs.cwd().openDir("../build", .{
+
+    // this block fixes zls not being able to compile and not having completions
+    var zls_is_builder = true;
+    var dir = std.fs.cwd().openDir("./build", .{
         .iterate = true,
-    });
+    }) catch DIR: {
+        zls_is_builder = false;
+        break :DIR try std.fs.cwd().openDir("../build", .{
+            .iterate = true,
+        });
+    };
     defer dir.close();
     var walker = try dir.walk(b.allocator);
     defer walker.deinit();
@@ -97,7 +105,8 @@ pub fn searched_idf_libs(b: *std.Build, lib: *std.Build.Step.Compile) !void {
                 break true;
         } else false;
         if (lib_ext) {
-            const src_path = std.fs.path.dirname(@src().file) orelse b.pathResolve(&.{".."});
+            // removed std.fs.path.dirname(@src().file) because it always fails only returns build.zig
+            const src_path = if (zls_is_builder) b.pathResolve(&.{"."}) else b.pathResolve(&.{".."});
             const cwd_path = b.pathJoin(&.{ src_path, "build", b.dupe(entry.path) });
             const lib_file: std.Build.LazyPath = .{ .cwd_relative = cwd_path };
             lib.addObjectFile(lib_file);
