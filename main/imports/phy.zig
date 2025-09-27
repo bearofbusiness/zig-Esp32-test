@@ -1,5 +1,4 @@
-const sys = @import("sys");
-
+const sys = @import("./idf-sys.zig");
 pub const RF = struct {
     pub fn config(conf: u8) void {
         sys.esp_phy_rftest_config(conf);

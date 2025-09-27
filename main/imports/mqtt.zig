@@ -1,6 +1,5 @@
 const std = @import("std");
-const sys = @import("sys");
-
+const sys = @import("./idf-sys.zig");
 pub const esp_transport_keepalive = extern struct {
     keep_alive_enable: bool = std.mem.zeroes(bool),
     keep_alive_idle: c_int = std.mem.zeroes(c_int),

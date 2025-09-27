@@ -1,4 +1,4 @@
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 const std = @import("std");
 
 // Zig error

@@ -1,5 +1,5 @@
-const sys = @import("sys");
-const errors = @import("error");
+const sys = @import("./idf-sys.zig");
+const errors = @import("./error.zig");
 
 pub fn newChannel(chan_cfg: [*c]const sys.i2s_chan_config_t, ret_tx_handle: [*c]sys.i2s_chan_handle_t, ret_rx_handle: [*c]sys.i2s_chan_handle_t) !void {
     return try errors.espCheckError(sys.i2s_new_channel(chan_cfg, ret_tx_handle, ret_rx_handle));

@@ -6,7 +6,7 @@ pub const Version = struct {
     patch: ?u32 = 0,
     pub fn get() Version {
         var final_version: Version = .{};
-        const idf_version = std.mem.span(@import("sys").esp_get_idf_version());
+        const idf_version = std.mem.span(@import("./idf-sys.zig").esp_get_idf_version());
 
         if (!std.mem.startsWith(u8, idf_version, "v"))
             return final_version;
@@ -35,7 +35,7 @@ pub const Version = struct {
         return final_version;
     }
     pub fn toString(self: Version, allocator: std.mem.Allocator) []const u8 {
-        const idf_version = std.mem.span(@import("sys").esp_get_idf_version());
+        const idf_version = std.mem.span(@import("./idf-sys.zig").esp_get_idf_version());
 
         // e.g.: v4.0.0 or commit-hash: g5d5f5c3
         if (!std.mem.startsWith(u8, idf_version, "v"))

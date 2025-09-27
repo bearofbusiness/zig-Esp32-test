@@ -1,6 +1,5 @@
 const std = @import("std");
-const sys = @import("sys");
-
+const sys = @import("./idf-sys.zig");
 pub const pollfd = extern struct {
     fd: c_int = std.mem.zeroes(c_int),
     events: c_short = std.mem.zeroes(c_short),

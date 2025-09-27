@@ -1,6 +1,6 @@
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 const std = @import("std");
-const errors = @import("error");
+const errors = @import("./error.zig");
 
 pub fn newEtmEvent(cfg: [*c]const sys.gpio_etm_event_config_t, ret_event: [*c]sys.esp_etm_event_handle_t) !void {
     return try errors.espCheckError(sys.gpio_new_etm_event(cfg, ret_event));

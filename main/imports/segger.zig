@@ -1,5 +1,4 @@
-const sys = @import("sys");
-
+const sys = @import("./idf-sys.zig");
 pub const RTT = struct {
     pub fn allocDownBuffer(sName: [*:0]const u8, pBuffer: ?*anyopaque, BufferSize: c_uint, Flags: c_uint) c_int {
         return sys.SEGGER_RTT_AllocDownBuffer(sName, pBuffer, BufferSize, Flags);

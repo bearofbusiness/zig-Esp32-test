@@ -1,6 +1,6 @@
 // need: idf.py add-dependency espressif/esp-dsp
 
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 const std = @import("std");
 
 const struct_unnamed_86 = extern struct {

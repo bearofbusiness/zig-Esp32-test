@@ -1,4 +1,4 @@
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 
 pub const PowerDomain = struct {
     pub fn On() void {

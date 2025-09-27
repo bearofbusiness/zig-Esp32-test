@@ -1,6 +1,5 @@
 const std = @import("std");
-const sys = @import("sys");
-
+const sys = @import("./idf-sys.zig");
 pub fn espLogFn(
     comptime level: std.log.Level,
     comptime scope: @TypeOf(.EnumLiteral),

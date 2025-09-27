@@ -1,5 +1,5 @@
-const sys = @import("sys");
-const errors = @import("error");
+const sys = @import("./idf-sys.zig");
+const errors = @import("./error.zig");
 
 pub const BUS = struct {
     pub fn add(bus_config: ?*const sys.i2c_master_bus_config_t, ret_bus_handle: [*c]sys.i2c_master_bus_handle_t) !void {

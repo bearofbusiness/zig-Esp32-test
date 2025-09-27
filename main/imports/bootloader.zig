@@ -1,4 +1,4 @@
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 const std = @import("std");
 
 pub const efuse_dev_t = extern struct {

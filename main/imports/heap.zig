@@ -1,4 +1,4 @@
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 const std = @import("std");
 
 /// Alocator for use heap_caps_allocator
@@ -181,7 +181,7 @@ pub const vPortAllocator = struct {
     }
 };
 
-const errors = @import("error");
+const errors = @import("./error.zig");
 pub const TRACE = struct {
     pub fn initStandalone(record_buffer: [*c]sys.heap_trace_record_t, num_records: usize) !void {
         return try errors.espCheckError(sys.heap_trace_init_standalone(record_buffer, num_records));

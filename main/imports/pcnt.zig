@@ -1,5 +1,5 @@
-const sys = @import("sys");
-const errors = @import("error");
+const sys = @import("./idf-sys.zig");
+const errors = @import("./error.zig");
 
 pub const PulseCounter = struct {
     pub const watchEventData_t = sys.pcnt_watch_event_data_t;

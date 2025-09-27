@@ -1,5 +1,5 @@
-const sys = @import("sys");
-const errors = @import("error");
+const sys = @import("./idf-sys.zig");
+const errors = @import("./error.zig");
 
 pub fn init(config: ?*const sys.wifi_init_config_t) !*const sys.wifi_init_config_t {
     if (config) |c| {

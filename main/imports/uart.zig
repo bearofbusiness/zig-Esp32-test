@@ -1,5 +1,5 @@
-const sys = @import("sys");
-const errors = @import("error");
+const sys = @import("./idf-sys.zig");
+const errors = @import("./error.zig");
 
 pub fn driverInstall(uart_num: sys.uart_port_t, rx_buffer_size: c_int, tx_buffer_size: c_int, queue_size: c_int, uart_queue: [*c]sys.QueueHandle_t, intr_alloc_flags: c_int) !void {
     return try errors.espCheckError(sys.uart_driver_install(uart_num, rx_buffer_size, tx_buffer_size, queue_size, uart_queue, intr_alloc_flags));

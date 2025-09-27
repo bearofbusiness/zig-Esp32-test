@@ -1,5 +1,4 @@
-const sys = @import("sys");
-
+const sys = @import("./idf-sys.zig");
 pub const xTimerCreate = sys.xTimerCreate;
 pub const xTimerCreateStatic = sys.xTimerCreateStatic;
 pub const pvTimerGetTimerID = sys.pvTimerGetTimerID;

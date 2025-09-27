@@ -1,6 +1,6 @@
 //! Suggestion, use: sys.py add-dependency espressif/led_strip
 
-const sys = @import("sys");
+const sys = @import("./idf-sys.zig");
 const std = @import("std");
 
 // Functions & types

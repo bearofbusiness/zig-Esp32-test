@@ -1,5 +1,5 @@
-const sys = @import("sys");
-const errors = @import("error");
+const sys = @import("./idf-sys.zig");
+const errors = @import("./error.zig");
 
 pub fn busInitialize(host_id: sys.spi_host_device_t, bus_config: [*c]const sys.spi_bus_config_t, dma_chan: sys.spi_dma_chan_t) !void {
     return try errors.espCheckError(sys.spi_bus_initialize(host_id, bus_config, dma_chan));
